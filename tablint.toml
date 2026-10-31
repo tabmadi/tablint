@@ -1,0 +1,2 @@
+# tablint checks itself. The fixtures break the rules on purpose.
+exclude = ["tests/fixtures/**"]

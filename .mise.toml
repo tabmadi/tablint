@@ -5,6 +5,7 @@ lefthook = "2.2.2"
 cocogitto = "7.0.0"
 gitleaks = "8.30.1"
 rumdl = "0.2.79"
+rust = { version = "1.99.1", components = "clippy,rustfmt" }
 
 [tasks.setup]
 description = "Install the git hooks"
@@ -12,7 +13,11 @@ run = "lefthook install"
 
 [tasks.format]
 description = "Apply every formatter"
-run = "rumdl check --fix ."
+run = ["cargo fmt", "rumdl check --fix ."]
+
+[tasks."lint:rust"]
+description = "Rust formatting and clippy, with every warning an error"
+run = ["cargo fmt --check", "cargo clippy --all-targets --locked -- -D warnings"]
 
 [tasks."lint:md"]
 description = "Markdown structure and formatting, per ADR-0001"
@@ -22,13 +27,35 @@ run = "rumdl check ."
 description = "Scan the working tree for committed secrets"
 run = "gitleaks dir . --no-banner"
 
+[tasks."lint:tablint"]
+description = "The repo's own prose, comments, and ADRs, checked by the tablint it builds"
+run = "cargo run --quiet --locked -- check ."
+
 [tasks.lint]
 description = "Every linter"
-depends = ["lint:md", "lint:secrets"]
+depends = ["lint:rust", "lint:md", "lint:secrets", "lint:tablint"]
 
 [tasks.test]
-description = "Run the tests"
-run = "echo 'No tests'"
+description = "Run the unit tests and the fixture tests"
+run = "cargo test --locked"
+
+[tasks."release:build"]
+description = "Build the release archive for the target in $TARGET, per ADR-0300"
+run = """
+set -eu
+version="$(cargo metadata --no-deps --format-version 1 | sed -E 's/.*"version":"([^"]+)".*/\\1/')"
+cargo build --release --locked --target "$TARGET"
+mkdir -p dist
+name="tablint-$version-$TARGET"
+case "$TARGET" in
+  *windows*) cp "target/$TARGET/release/tablint.exe" . && 7z a "dist/$name.zip" tablint.exe README.md LICENSE ;;
+  *) cp "target/$TARGET/release/tablint" . && tar -czf "dist/$name.tar.gz" tablint README.md LICENSE ;;
+esac
+"""
+
+[tasks."release:upload"]
+description = "Attach every archive in dist/ to the GitHub release of the tag in $TAG"
+run = "gh release upload \"$TAG\" dist/* --clobber"
 
 [tasks.check]
 description = "The gate: run it before you finish a change"

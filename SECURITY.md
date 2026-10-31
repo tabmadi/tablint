@@ -92,8 +92,6 @@ To ask about security or to report a vulnerability, contact:
 - Security Email: [tabmadi@proton.me](mailto:tabmadi@proton.me)
 - Project Maintainer: [tabmadi@proton.me](mailto:tabmadi@proton.me)
 
-*Replace these with your real contact information.*
-
 ## Acknowledgments
 
 We thank these people, who disclosed security vulnerabilities responsibly:

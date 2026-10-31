@@ -17,3 +17,9 @@
 
 # Planned work stays local, per ADR-0000
 *.local.md
+
+# Cargo build output
+/target/
+
+# Release archives
+/dist/

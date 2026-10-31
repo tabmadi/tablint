@@ -1,0 +1,61 @@
+docs/adr/0002-bad.md: adr/sections: the last section is not Rules
+docs/adr/0002-bad.md: adr/sections: the sections are out of order: Decision, Context
+docs/adr/0002-bad.md:4: adr/decides: the Decides line has more than one sentence
+docs/adr/0002-bad.md:8: adr/reference: ADR-0005 is neither a file nor reserved
+docs/adr/0002-bad.md:14: construct/dated-heading: write a heading with no date
+docs/adr/0003-unindexed.md: adr/header: the header has no `status` field
+docs/adr/README.md: adr/index: ADR-0003 has no row
+docs/adr/README.md:6: adr/index-decides: the row does not repeat the Decides line of docs/adr/0002-bad.md
+docs/adr/README.md:7: adr/index: the row names ADR-0009, which has no file
+docs/adr/README.md:7: docs/untracked-link: `0009-gone.md` is not a file git tracks
+docs/bad.md: docs/root: the docs/ root holds only the entry documents and the registries
+docs/bad.md:3: construct/chronology: chronology `used to be`: state the standing fact: what is true now. Git holds the history
+docs/bad.md:3: construct/hedge: hedge `basically`: decide. A hedge is an unfinished decision
+docs/bad.md:3: construct/intensifier: intensifier `very`: delete it. A claim that needs an intensifier is not established
+docs/bad.md:3: construct/meta-commentary: meta-commentary `Note that`: state the thing, without an introduction
+docs/bad.md:3: construct/status: status `not yet`: state the rule with no qualifier. Whether the artefact exists is not the subject
+docs/bad.md:3: simple/ampersand: ampersand `&`: write `and`
+docs/bad.md:3: simple/complex-word: complex word `utilize`: write `use`
+docs/bad.md:3: simple/contraction: contraction `Don't`: write the full form: `do not`, `it is`
+docs/bad.md:3: simple/dash: dash `A - d`: write two sentences, or use a colon or a comma
+docs/bad.md:3: simple/emoji: emoji `🚀`: write the meaning in words
+docs/bad.md:3: simple/exclamation: exclamation `w!`: delete it
+docs/bad.md:3: simple/latin: latin `e.g.`: write `for example`, `that is`, a complete list, or `or`
+docs/bad.md:3: simple/parentheses: parentheses `(now)`: write the aside as its own sentence, or delete it
+docs/bad.md:3: simple/question: question `y?`: write the answer as a statement
+docs/bad.md:3: simple/quote: quote `"`: use backticks for literal text
+docs/bad.md:3: simple/semicolon: semicolon `t;`: write two sentences, or use a colon
+docs/bad.md:3: simple/slash: slash `and/or`: write `or`, `and`, or a list
+docs/bad.md:3: simple/slash: slash `red/blue`: write `or`, `and`, or a list. Put a path in backticks
+docs/bad.md:5: simple/sentence-length: long sentence `This sentence is written to be far too ...`: 28 words, max 25. Split it
+docs/bad.md:7: docs/untracked-link: `missing.md` is not a file git tracks
+docs/bad.md:7: simple/question: question `n?`: write the answer as a statement
+docs/bad.md:12: construct/planned-work: planned-work `TODO`: a task is an issue, not a line in a committed file
+docs/bad.md:14: char/banned: em dash: write two sentences, or use a colon or a comma
+docs/guide: docs/single-file-dir: a directory that holds a single file groups nothing
+docs/guide/steps.md:3: simple/sentence-length: long sentence `Open the file in the editor and then ...`: 23 words, max 20. Split it
+docs/stray: docs/single-file-dir: a directory that holds a single file groups nothing
+docs/stray/only.md: docs/genre: `docs/stray` is not a genre directory
+messages/de.json:3: simple/parentheses: home.title: parentheses `(nicht)`: write the aside as its own sentence, or delete it
+messages/de.json:3: simple/question: home.title: question `)?`: write the answer as a statement
+messages/de.json:3: simple/semicolon: home.title: semicolon `t;`: write two sentences, or use a colon
+messages/en.json:3: simple/complex-word: home.title: complex word `utilize`: write `use`
+messages/en.json:3: simple/contraction: home.title: contraction `Don't`: write the full form: `do not`, `it is`
+messages/en.json:3: simple/parentheses: home.title: parentheses `(really)`: write the aside as its own sentence, or delete it
+messages/en.json:3: simple/question: home.title: question `)?`: write the answer as a statement
+messages/en.json:3: simple/semicolon: home.title: semicolon `s;`: write two sentences, or use a colon
+src/main.go:3: comment/length: 4 lines, max 3. One line is the norm
+src/main.go:3: construct/intensifier: intensifier `very`: delete it. A claim that needs an intensifier is not established
+src/main.go:3: simple/complex-word: complex word `utilize`: write `use`
+src/main.go:3: simple/contraction: contraction `Don't`: write the full form: `do not`, `it is`
+src/main.go:3: simple/latin: latin `e.g.`: write `for example`, `that is`, a complete list, or `or`
+src/main.go:3: simple/parentheses: parentheses `(now)`: write the aside as its own sentence, or delete it
+src/main.go:3: simple/semicolon: semicolon `t;`: write two sentences, or use a colon
+src/main.go:8: comment/todo: cite an ADR such as `ADR-0123` or an issue such as `#123`
+src/main.go:9: comment/commented-out-code: git holds it. Delete it
+src/main.go:10: comment/banner: the file structure is the structure
+src/main.go:11: comment/changelog: git holds authorship and dates
+src/main.go:15: comment/echo-doc: state a fact that the signature of `NewServer` cannot: units, empty values, bounds, side effects, or errors. Otherwise delete it
+src/run.sh:3: construct/hedge: hedge `basically`: decide. A hedge is an unfinished decision
+src/tool.gd:6: simple/question: question `n?`: write the answer as a statement
+✗ 60 findings in 13 files. `tablint rules` explains each rule

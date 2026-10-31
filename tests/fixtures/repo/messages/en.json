@@ -1,0 +1,6 @@
+{
+  "home": {
+    "title": "Don't utilize this; it is fine (really)?",
+    "count": "{count, plural, one {# item} other {# items}} in the cart"
+  }
+}

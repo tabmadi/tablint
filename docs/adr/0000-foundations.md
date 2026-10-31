@@ -1,36 +1,36 @@
 # ADR-0000: Foundations
 
 **Status:** Accepted
-**Decides:** What this repo is, what a generated repo inherits from it, and the ADR process itself.
+**Decides:** tablint is one owner's linter for prose, comments, and decision records, it is public and free to use, and every decision is an ADR.
 
 ## Context
 
-Every other template in the set starts from this repo. A file here is copied into each generated repo, and the copies do not link back. So a line that is right for one project and wrong for the next is a defect in every copy.
+The owner's repositories share one house style and one way to record decisions. Each repository checked them with its own copy of the same linters, in Go, in GDScript, or by review alone. The copies drifted apart, and a fix in one never reached the others.
 
-A repo without written decisions loses the reason for each choice. The next engineer then removes a check that exists for a reason, or adds a second tool for a job that one tool already does.
+The established linters each own one language or one format. None of them checks the Simple English profile, the comment rules, and the ADR set together.
 
 ## Decision
 
-This repo is a language-agnostic scaffold. It holds the community health files, the issue and pull request templates, the shared toolchain, and the documentation convention. It holds no application code.
+tablint is one binary that checks the rules of [ADR-0001](0001-documentation-conventions.md) and the structure of an ADR set. A repository installs it with `mise` and adds a short `tablint.toml`.
 
-**The task names are a contract.** `setup`, `format`, `lint`, `test`, `check`, and `ci` exist in every generated repo, per [ADR-0100](0100-toolchain.md). A generated repo fills them with real commands. It does not rename or delete them.
+**It serves its owner.** The rules are the owner's opinion, and a default is a decision, not a starting point. A repository can turn a rule off, but it cannot redesign one. The code is public under the Apache License 2.0, so anyone can use it. It is not advertised, and it makes no promise of support or compatibility.
+
+**It checks only what nothing else checks.** Code style, Markdown structure, shell, and secrets belong to golangci-lint, Biome, rumdl, shellcheck, and gitleaks. tablint never duplicates one of them.
 
 **Every decision is an ADR.** An ADR states what is true of the repo. It is law, not a plan: no roadmap, no follow-ups, and no remark on unfinished work. A gap between an ADR and the code is unfinished work.
-
-**The ADR set has a size.** A repo of the template size has three ADRs: this one, [ADR-0001](0001-documentation-conventions.md) for the documentation conventions, and [ADR-0100](0100-toolchain.md) for the toolchain. A generated repo adds an ADR when it makes a decision that a reader would otherwise question.
 
 **Planned work stays local.** It lives in an untracked `*.local.md` file, and `.gitignore` excludes these files.
 
 ## Consequences
 
-The same text exists in many repos. The [blueprints](https://github.com/tabmadi/blueprints) repo keeps the copies in step: a change starts here and goes to every repo of the same size in one pass.
+A rule that suits the owner and not another user stays. Another user forks the repository or turns the rule off.
 
-A generated repo inherits these ADRs. So an ADR is written for the engineer who maintains the repo, not for a person who decides whether to adopt it. Selection guidance belongs in the root `README.md`.
+One fix to a rule reaches every repository at its next version bump, through its `mise` pin.
 
 ## Rules
 
-- Every ADR carries a `Status`, a one-sentence `Decides` line, and a flat `Rules` section.
+- Every ADR carries a `Status`, a one-sentence `Decides` line, and a flat `Rules` section. `(CI: lint:tablint)`
 - An ADR states what is true, never what is intended. No roadmap, follow-up, or status section.
-- The tasks `setup`, `format`, `lint`, `test`, `check`, and `ci` exist in every repo made from this one.
-- Nothing in this repo is specific to one language or one project.
-- Planned work lives in an untracked `*.local.md` file. No committed file links to one.
+- A rule that another tool in the toolchain of ADR-0100 already checks is not added to tablint.
+- A repository changes a rule only by turning it off or by setting a path in `tablint.toml`.
+- Planned work lives in an untracked `*.local.md` file. No committed file links to one. `(CI: lint:tablint)`

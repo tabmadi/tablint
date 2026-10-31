@@ -1,0 +1,36 @@
+[package]
+name = "tablint"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.99"
+description = "An opinionated linter for Simple English prose, code comments, and decision records"
+license = "Apache-2.0"
+repository = "https://github.com/tabmadi/tablint"
+publish = false
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "4.6.7", features = ["derive"] }
+globset = "0.4.21"
+pulldown-cmark = { version = "0.13.6", default-features = false }
+regex = "1.13.1"
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+toml = "1.1.8"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[lints.clippy]
+pedantic = { level = "warn", priority = -1 }
+module_name_repetitions = "allow"
+# Prose in doc comments names products such as TypeScript, which are not code.
+doc_markdown = "allow"
+# Repository files use lowercase extensions, per the conventions of each ecosystem.
+case_sensitive_file_extension_comparisons = "allow"
+missing_errors_doc = "allow"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

@@ -164,7 +164,7 @@ A reader with B1 English reads every text in the repo. An LLM gets closed lists 
 
 Some ideas need two or three short sentences, not one long sentence. This is accepted: the reader reads faster and misreads less.
 
-No task checks the profile, the banned constructs, or the comment rules. A document that passes `lint:md` can still violate this ADR. Review is the gate for the rest, and the closed lists give a reviewer a mechanical reason to reject a text.
+tablint checks the closed lists and the limits, per [ADR-0200](0200-architecture.md). Review is the gate for the rest: word level, voice, one term per concept, and the comment tests a machine cannot apply.
 
 ## Rules
 
@@ -173,26 +173,26 @@ No task checks the profile, the banned constructs, or the comment rules. A docum
 - General words are at CEFR B1, with the most common word for the meaning. Technical names and technical verbs are always allowed, and are never replaced with a general word that changes the meaning.
 - One term names one concept across the set, and a word keeps one meaning.
 - A single verb replaces a phrasal verb when one exists. No idioms.
-- Latin abbreviations and contractions are not used: no `e.g.`, `i.e.`, `etc.`, or `vs.`, and no `don't` or `it's`.
-- A sentence has one idea and at most 25 words. A sentence under `docs/guide/` or in a numbered procedure has at most 20 words.
-- Prose punctuation is period, comma, colon, and the possessive apostrophe. The em dash, en dash, semicolon, parentheses, `?`, `!`, ellipsis, quote marks, `&`, and `/` in the sense of `or` are not used in prose. Markdown syntax, code, paths, URLs, and enforcement annotations are not prose.
-- The em dash, en dash, ellipsis, and curly quotes appear in no tracked text file, code included. A text adopted verbatim from a third party is exempt.
+- Latin abbreviations and contractions are not used: no `e.g.`, `i.e.`, `etc.`, or `vs.`, and no `don't` or `it's`. `(CI: lint:tablint)`
+- A sentence has one idea and at most 25 words. A sentence under `docs/guide/` or in a numbered procedure has at most 20 words. `(CI: lint:tablint)`
+- Prose punctuation is period, comma, colon, and the possessive apostrophe. The em dash, en dash, semicolon, parentheses, `?`, `!`, ellipsis, quote marks, `&`, and `/` in the sense of `or` are not used in prose. Markdown syntax, code, paths, URLs, and enforcement annotations are not prose. `(CI: lint:tablint)`
+- The em dash, en dash, ellipsis, and curly quotes appear in no tracked text file, code included. A text adopted verbatim from a third party is exempt. `(CI: lint:tablint)`
 - Three or more items that share two or more attributes are a table. Three or more parallel items are a list.
-- Chronology, intensifiers, hedges, meta-commentary, questions, planned work, and implementation status appear in no document and no comment.
+- Chronology, intensifiers, hedges, meta-commentary, questions, planned work, and implementation status appear in no document and no comment. `(CI: lint:tablint)`
 - A number is stated only if doubling it would change the decision. Any other count becomes a link to its registry.
-- No committed file links to an untracked one.
+- No committed file links to an untracked one. `(CI: lint:tablint)`
 - A decision lives in `docs/adr/`, a procedure in `docs/guide/`, and a lookup in `docs/reference/`. The root `README.md` says what the repo is and how to start.
-- No text uses emoji: not in a heading, a list, a commit title, or task output.
+- No text uses emoji: not in a heading, a list, a commit title, or task output. `(CI: lint:tablint)`
 - Markdown is not hard-wrapped: one line per paragraph, list item, or table row.
 - Tables are compact, never padded: one space inside each pipe and a bare `---` delimiter. `(CI: lint:md)`
 - Markdown passes `rumdl`. `(CI: lint:md)`
 - The first answer to the need for a comment is to extract a named function. `(ref: Fowler, Refactoring)`
 - A comment carries only what an expert reader cannot derive from the code and the ADR set. Doubt resolves to deletion.
-- A comment is one paragraph of at most three lines. One line is the norm.
+- A comment is one paragraph of at most three lines. One line is the norm. `(CI: lint:tablint)`
 - A fact that outlives the file it describes is an ADR or a doc, and the comment cites it instead of restating it.
 - An exported identifier has a doc comment only when the comment states a fact the signature cannot. A doc comment that restates the signature is deleted.
 - No comment describes a state that a later edit makes false. The value it describes states it.
 - A comment does not teach a third-party tool what that tool documents, and does not restate a convention that the path or identifier carries.
-- Commented-out code, changelog, author, or date comments, and decorative banners are not committed.
-- A `TODO` cites an issue or an ADR.
+- Commented-out code, changelog, author, or date comments, and decorative banners are not committed. `(CI: lint:tablint)`
+- A `TODO` cites an issue or an ADR. `(CI: lint:tablint)`
 - A comment that exists to explain confusing code is a defect. The code is rewritten.

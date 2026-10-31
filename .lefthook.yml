@@ -15,6 +15,9 @@ pre-commit:
       run: mise x -- rumdl check {staged_files}
     secrets:
       run: mise x -- gitleaks git --pre-commit --staged --no-banner
+    rust:
+      glob: "*.rs"
+      run: mise x -- cargo fmt --check
 
 # The full CI run, so a push never reaches CI untested. `git push --no-verify` skips it.
 pre-push:

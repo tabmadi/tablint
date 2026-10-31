@@ -1,0 +1,9 @@
+disable = ["annotation/task"]
+[adr]
+header-fields = ["status", "decides"]
+foreign = ["games"]
+[docs]
+genre-dirs = ["adr", "guide"]
+root-files = ["README.md"]
+[messages]
+dir = "messages"
