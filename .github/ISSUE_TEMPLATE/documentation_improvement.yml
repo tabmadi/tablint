@@ -1,0 +1,53 @@
+name: Documentation Improvement
+description: Suggest a change to the documentation
+title: "docs: "
+labels: [ "documentation" ]
+assignees: [ ]
+
+body:
+  - type: dropdown
+    id: doc-type
+    attributes:
+      label: Documentation Type
+      description: The type of documentation to improve.
+      options:
+        - README
+        - API Documentation
+        - Code Comments
+        - Examples and Tutorials
+        - Installation Instructions
+        - Configuration Guide
+        - Other, described below
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Documentation Location
+      description: The URL or file path of the documentation to improve.
+      placeholder: README.md or https://github.com/user/repo/blob/main/docs/guide.md
+    validations:
+      required: true
+  - type: textarea
+    id: current-state
+    attributes:
+      label: Current State
+      description: What the documentation says now, or what it does not say.
+      placeholder: The documentation has no information about
+    validations:
+      required: true
+  - type: textarea
+    id: improvement
+    attributes:
+      label: Suggested Improvement
+      description: The change you suggest.
+      placeholder: I suggest adding or changing
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Add any other information about the change here.
+    validations:
+      required: false

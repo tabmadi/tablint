@@ -1,0 +1,19 @@
+# JetBrains
+.idea/
+.run/
+
+# Visual Studio Code
+.vscode/
+.history
+
+# Vim
+*~
+*.swp
+*.swo
+
+# Environment variable files
+.env*
+!.env.example
+
+# Planned work stays local, per ADR-0000
+*.local.md

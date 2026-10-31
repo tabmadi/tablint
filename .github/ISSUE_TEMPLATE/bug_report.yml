@@ -1,0 +1,63 @@
+name: Bug Report
+description: Report a bug
+title: "fix: "
+labels: ["bug", "triage"]
+assignees: []
+
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: Describe what happened, and what you expected to happen.
+      placeholder: Describe what you see.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction-steps
+    attributes:
+      label: Steps to reproduce
+      description: List the steps that make the issue happen again.
+      placeholder: |
+        1. Go to the page
+        2. Click the control
+        3. Scroll down
+        4. See the error
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: The browsers that show the problem, if any
+      multiple: true
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Opera
+    validations:
+      required: false
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      description: The operating system you use.
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log output
+      description: Paste any relevant log output. It is formatted as code, so do not add backticks.
+      render: shell
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other information about the problem here.

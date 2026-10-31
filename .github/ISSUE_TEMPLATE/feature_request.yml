@@ -1,0 +1,34 @@
+name: Feature Request
+description: Suggest an idea for this project
+title: "feat: "
+labels: [ "enhancement" ]
+assignees: [ ]
+
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Feature Summary
+      description: A short description of the feature you propose
+      placeholder: I would like to see
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance-criteria
+    attributes:
+      label: Acceptance Criteria
+      description: The criteria that the feature must meet to be complete.
+      placeholder: |
+        - When I do an action
+        - Then I see a result
+        - And when I do another action
+        - Then another result happens
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any other information, screenshots, or mockups about the feature here.
+    validations:
+      required: false
