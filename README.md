@@ -24,7 +24,7 @@ tablint serves one owner's repositories. It is free to use under the Apache Lice
 
    ```toml
    [tools]
-   "github:tabmadi/tablint" = "0.1.0"
+   "github:tabmadi/tablint" = "0.1.1"
    ```
 
 2. Add a task:

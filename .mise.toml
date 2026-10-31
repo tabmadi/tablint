@@ -41,6 +41,8 @@ run = "cargo test --locked"
 
 [tasks."release:build"]
 description = "Build the release archive for the target in $TARGET, per ADR-0300"
+# mise runs a task with cmd on Windows, and these scripts are bash.
+shell = "bash -c"
 run = """
 set -eu
 version="$(cargo metadata --no-deps --format-version 1 | sed -E 's/.*"version":"([^"]+)".*/\\1/')"
@@ -55,6 +57,7 @@ esac
 
 [tasks."release:upload"]
 description = "Attach every archive in dist/ to the GitHub release of the tag in $TAG"
+shell = "bash -c"
 run = "gh release upload \"$TAG\" dist/* --clobber"
 
 [tasks.check]
